@@ -3,55 +3,64 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-   
+
 }
 
 <h2>Create</h2>
-<script src="~/Scripts/SalvarPedido.js"></script>  
- 
+@*<script src="~/Scripts/Pedido.js"></script>*@
+@*<script src="~/Scripts/ListarItens.js"></script>*@
 
 
-    
-    <div class="form-horizontal">
-        <h4>Pedidos</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Clientes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Clientes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Clientes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @*<input type="submit" onclick="SalvarPedido()" value="Salvar Pedido"/>*@
-                @Html.ActionLink(linkText:"Salvar Pedido",actionName:"#",htmlAttributes: new {onclick="SalvarPedido()",@class="btn btn-primary" },routeValues:null)
-            </div>
+<div class="form-horizontal">
+    <h4>Pedidos</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
         </div>
     </div>
 
-<div id="divItens">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Clientes, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Clientes, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Clientes, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="#" onclick="SalvarPedido();" class="btn btn-default">Salvar Pedido</a>
+            @*<input type="submit" onclick="SalvarPedido()" value="Salvar Pedido"/>*@
+            @*@Html.ActionLink(linkText: "Salvar Pedido", actionName: null, htmlAttributes: new { onclick = "SalvarPedido()", @class = "btn btn-primary" }, routeValues: null)*@
+        </div>
+    </div>
+</div>
+
+<div id="divItens" style="display:none;">
 
 </div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/Pedido.js"></script>
+  
+}
