@@ -23,7 +23,7 @@
 
 }
 function ListarItens(idItem) {
-
+    debugger
     $.ajax({
 
             url: "/Itens/ListarItens",
@@ -43,3 +43,24 @@ function ListarItens(idItem) {
 
 }
 
+function SalvarItens()
+{
+    var quantidade = $("#Quantidade").val();
+    var produto = $("#Produto").val();
+    var valorunitario = $("#ValorUnitario").val();
+    var idPedido = $("#idPedido").val();
+
+    $.ajax({
+        url:"/Itens/SalvarItens",
+        data: { Quantidade: quantidade, Produto: produto, ValorUnitario: valorunitario, IdPedido: idPedido },
+        type: "GET",
+        datatype:"html",
+        success: function (data) {
+            if(data.Resultado > 0)
+            {
+                debugger
+                ListarItens(idPedido);
+            }
+        }
+    });
+}

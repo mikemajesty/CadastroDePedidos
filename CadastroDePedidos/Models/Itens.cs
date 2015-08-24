@@ -12,7 +12,7 @@ namespace CadastroDePedidos.Models
     {
         [Key]
         public int ItensID { get; set; }
-        public Pedidos Pedidos { get; set; }
+        public Pedidos Pedido { get; set; }
         public int Quantidade { get; set; }
         public string Produto { get; set; }
         public decimal ValorUnitario { get; set; }
