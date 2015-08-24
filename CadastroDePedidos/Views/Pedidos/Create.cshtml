@@ -2,14 +2,15 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
 }
 
 <h2>Create</h2>
+<script src="~/Scripts/SalvarPedido.js"></script>  
+ 
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <h4>Pedidos</h4>
@@ -41,16 +42,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                @*<input type="submit" onclick="SalvarPedido()" value="Salvar Pedido"/>*@
+                @Html.ActionLink(linkText:"Salvar Pedido",actionName:"#",htmlAttributes: new {onclick="SalvarPedido()",@class="btn btn-primary" },routeValues:null)
             </div>
         </div>
     </div>
-}
 
+<div id="divItens">
+
+</div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

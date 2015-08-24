@@ -45,17 +45,17 @@ namespace CadastroDePedidos.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PedidosID,Data,Clientes,Valor")] Pedidos pedidos)
+       
+        public ActionResult Create(/*[Bind(Include = "PedidosID,Data,Clientes,Valor")] */Pedidos pedidos)
         {
             if (ModelState.IsValid)
             {
                 db.Pedidos.Add(pedidos);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+               
             }
 
-            return View(pedidos);
+            return Json(new { Resultado = pedidos.PedidosID },JsonRequestBehavior.AllowGet);
         }
 
         // GET: Pedidos/Edit/5
